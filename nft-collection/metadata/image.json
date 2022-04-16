@@ -1,0 +1,22 @@
+{
+  "name": "quocha NFT",
+  "description": "The testing NFT",
+  "image": "https://ipfs.io/ipfs/QmXHStpLSKJdd1s7mQhkvabaUHDCr6vBq5AyvBDZfvgTDd",
+  "attributes": [
+    {
+      "trait_type": "Strength",
+      "value": 8,
+      "max_value": 10
+    },
+    {
+      "trait_type": "Speed",
+      "value": 7,
+      "max_value": 10
+    },
+    {
+      "trait_type": "AttackSpeed",
+      "value": 3,
+      "max_value": 10
+    }
+  ]
+}
