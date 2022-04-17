@@ -95,7 +95,7 @@ contract ERC721 {
         safeTransferFrom(from, to, tokenId, "");
     }
 
-    // EIP165 proposal, use for a third side
+    // EIP165 proposal, use for a third side application 
     function supportInterface(bytes4 interfaceID) public pure virtual returns(bool){
         return interfaceID == 0x80ac58cd;
     }

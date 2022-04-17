@@ -9,15 +9,14 @@ async function main() {
   await tokenContract.deployed();
 
   const vendor = await ethers.getContractFactory("Vendor");
-  const vendorContract = await vendor.deploy(tokenContract.address);
+  const vendorContract = await vendor.deploy();
   await vendorContract.deployed();
 
+  console.log(vendorContract.address);
   const result = await tokenContract.transfer(
     vendorContract.address,
-    utils.parseEther(1000000)
+    utils.parseEther("1000000")
   );
-
-  console.log(result);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

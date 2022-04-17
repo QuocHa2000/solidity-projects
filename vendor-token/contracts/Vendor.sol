@@ -19,8 +19,8 @@ contract Vendor is Ownable {
     event BuyTokens(address buyer, uint256 ethAmount, uint256 tokenAmount);
     event SellTokens(address seller, uint256 tokenAmount, uint256 ethAmount);
 
-    constructor (address tokenAddress){
-        primaryToken = MainToken(tokenAddress);
+    constructor (){
+        primaryToken = new MainToken();
     }
 
     function buyTokens() public payable returns(bool) {
