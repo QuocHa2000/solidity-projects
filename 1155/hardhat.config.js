@@ -1,7 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
+require("@nomiclabs/hardhat-etherscan");
+require("dotenv").config();
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   const accounts = await hre.ethers.getSigners();
 
@@ -10,12 +10,44 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   }
 });
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
 module.exports = {
-  solidity: "0.8.4",
+  defaultNetwork: "hardhat",
+  networks: {
+    // hardhat: {},
+    // development: {
+    //   url: "http://127.0.0.1:8545",
+    // },
+    // quorum: {
+    //   url: "http://127.0.0.1:22000",
+    // },
+    // ropsten: {
+    //   url: `https://eth-ropsten.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
+    //   accounts: [`${ROPSTEN_PRIVATE_KEY}`],
+    // },
+    matic: {
+      url: `https://polygon-mumbai.g.alchemy.com/v2/${process.env.AL_API_KEY}`,
+      accounts: [process.env.ACCOUNT_PRIVATE_KEY],
+    },
+  },
+  etherscan: {
+    apiKey: process.env.MATIC_API_KEY,
+  },
+  solidity: {
+    version: "0.8.13",
+    settings: {
+      optimizer: {
+        enabled: true,
+        runs: 200,
+      },
+    },
+  },
+  paths: {
+    sources: "./contracts",
+    tests: "./test",
+    cache: "./cache",
+    artifacts: "./artifacts",
+  },
+  mocha: {
+    timeout: 20000,
+  },
 };

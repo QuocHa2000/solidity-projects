@@ -20,7 +20,7 @@ contract Vendor is Ownable {
     event SellTokens(address seller, uint256 tokenAmount, uint256 ethAmount);
 
     constructor (){
-        primaryToken = new MainToken();
+        primaryToken = new MainToken("Vendor Token", "VTK", 1000000*10**18);
     }
 
     function buyTokens() public payable returns(bool) {
